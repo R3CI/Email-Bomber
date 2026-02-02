@@ -1,7 +1,5 @@
 # Email Bomber that Exploits the Discord Report System
 
-**PROOF OF CONCEPT**
-
 ## ⚠️ Disclaimer
 
 This repository is provided **strictly as a proof of concept (PoC)** for **educational and security research purposes only**.
