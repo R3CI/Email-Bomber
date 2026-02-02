@@ -45,7 +45,7 @@ If you do not agree with these terms, **do not use this code**.
 If you choose to test this PoC with proxies, you may place them in:
 
 ```
-proxy.txt
+proxies.txt
 ```
 
 **Format:**
