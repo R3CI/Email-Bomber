@@ -28,7 +28,8 @@ if useproxies == 'y':
         if plist == ['user:pass@ip:port']:  
             print('No proxies found in proxies.txt, did u forget to save the file?')
             useproxies = False
-        useproxies = True
+        else:
+            useproxies = True
     except FileNotFoundError:
         with open('proxies.txt', 'w') as f:
             f.write('user:pass@ip:port')
