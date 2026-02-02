@@ -1,9 +1,17 @@
-import curl_cffi
-from concurrent.futures import ThreadPoolExecutor
-import random
-import uuid
-import secrets
-import time
+import os
+try:
+    import curl_cffi
+    from concurrent.futures import ThreadPoolExecutor
+    import random
+    import uuid
+    import secrets
+    import time
+except Exception as e:
+    print('Error on init, trying to fix')
+    os.system('pip install curl_cffi')
+    print('Run the script again should work now!')
+
+
 
 print('NO SUPPORT FOR THIS TOOL IF YOU COME TO MY DISCORD SERVER AND ASK FOR HELP I WILL NOT ANSWER AND CLOSE UR TICKET')
 print('Found by r3ci | discord.gg/spamming | t.me/remoteexecution')
