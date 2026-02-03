@@ -43,7 +43,7 @@ else:
 
 s = curl_cffi.Session(impersonate='chrome136')
 
-def cwel():
+def fetchfinger():
     idpart = ''.join(str(random.randint(0,9)) for _ in range(18))
     def seg(n): return secrets.token_urlsafe(n)[:n]
     return f'{idpart}.{seg(22)}.{seg(27)}'
@@ -94,7 +94,7 @@ class bomber:
                 'https': fullproxy
             }
 
-        s.headers['x-fingerprint'] = cwel()
+        s.headers['x-fingerprint'] = fetchfinger()
         r = s.post(
             'https://discord.com/api/v9/reporting/unauthenticated/message_urf/code',
             json={
