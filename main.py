@@ -10,6 +10,7 @@ except Exception as e:
     print(e)
     print('Error on init, trying to fix')
     os.system('pip install curl_cffi')
+    os.system('pip install curl-cffi')
     input('Run the script again should work now!')
     os.exit()
 
