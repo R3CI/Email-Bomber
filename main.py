@@ -77,8 +77,7 @@ class bomber:
             'x-debug-options': 'bugReporterEnabled',
             'x-discord-locale': 'en-US',
             'x-discord-timezone': 'Europe/Warsaw',
-            'x-fingerprint': None,
-            'x-super-properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiaGFzX2NsaWVudF9tb2RzIjpmYWxzZSwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzE0MS4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTQxLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL215dm91Y2guZXMvIiwicmVmZXJyaW5nX2RvbWFpbiI6Im15dm91Y2guZXMiLCJyZWZlcnJlcl9jdXJyZW50IjoiIiwicmVmZXJyaW5nX2RvbWFpbl9jdXJyZW50IjoiIiwicmVsZWFzZV9jaGFubmVsIjoic3RhYmxlIiwiY2xpZW50X2J1aWxkX251bWJlciI6NDU3MTc0LCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsLCJjbGllbnRfbGF1bmNoX2lkIjoiMjc1MTM5MDItMjQxOC00Yjg5LWIyNzMtMWJhOTNhNTQ4NmI1IiwibGF1bmNoX3NpZ25hdHVyZSI6IjhlMDM2NDYwLWQzMjQtNDEwMS05YzE4LTc1MTYzNGM1YzNlZSIsImNsaWVudF9hcHBfc3RhdGUiOiJmb2N1c2VkIn0='
+            'x-fingerprint': None
         })
         self.setcookie()
 
