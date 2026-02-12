@@ -103,7 +103,7 @@ class bomber:
         )
 
         if r.status_code == 200:
-            print(f'Sent email with statking bypassed')
+            print(f'Sent email with stacking bypassed')
 
         elif r.status_code == 429:
             ratelimit = r.json().get('retry_after', 1.5)
