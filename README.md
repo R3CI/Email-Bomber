@@ -1,3 +1,8 @@
+was working for like 2 months but got patched rip
+might unpatch someday
+
+
+
 # Email Bomber that Exploits the Discord Report System
 
 ## ⚠️ Disclaimer
