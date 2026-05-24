@@ -3,7 +3,7 @@ might unpatch someday
 
 
 
-# Email Bomber that Exploits the Discord Report System
+# Script that Exploits the Discord Report System
 
 ## ⚠️ Disclaimer
 
